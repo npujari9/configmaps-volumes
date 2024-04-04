@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-volumes
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: configmap-volumes
+  template:
+    metadata:
+      labels:
+        app: configmap-volumes
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config-volumes-configmap
+      containers:
+       - name: configmap-volumes
+         image: configmapvolumes:latest
+         imagePullPolicy: Never
+         ports:
+          - containerPort: 8080
+         resources:
+           limits:
+             cpu: "500m"
+             memory: "512Mi"
+           requests:
+             cpu: "250m"
+             memory: "256Mi"
+         volumeMounts:
+            - name: config-volume
+              mountPath: "/config"
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: configmap-volumes-service
+  namespace: dev
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: configmap-volumes

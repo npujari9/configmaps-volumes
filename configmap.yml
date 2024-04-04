@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-volumes-configmap
+  namespace: dev
+data:
+  application.yaml: |-
+    spring:
+      application:
+        name: configmaps-volumes
+      jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: true
+        hibernate:
+          ddl-auto: none
+      sql:
+        init:
+          data-locations: classpath:sql/CreateSchema.sql, classpath:sql/InsertSchema.sql
+      h2:
+        console:
+          enabled: true
+          path: /h2-console
+          settings.trace: true
+          settings.web-allow-others: false
+
+    server:
+      servlet:
+        context-path: /configmapvolumes
+      port: 8080
+
+    h2.database:
+      jdbcUrl: jdbc:h2:mem:DepartmentDB
+      driverClassName: org.h2.Driver
+      username: sa
+      password: password
