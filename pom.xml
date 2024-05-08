@@ -14,7 +14,7 @@
 	<name>configmaps-volumes</name>
 	<description>Load configmap as volumes into Spring Boot application</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

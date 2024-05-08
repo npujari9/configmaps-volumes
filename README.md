@@ -1,2 +1,14 @@
 # configmaps-volumes
-mount configmap as volumes in Kubernetes for Spring Boot application
+**Spring Boot Application with ConfigMaps as Volumes**
+**This repository contains a Spring Boot application configured to use Kubernetes ConfigMaps as volumes for managing application configuration.**
+
+Prerequisites
+Before getting started, ensure you have the following installed:
+
+* Kubernetes cluster : minikube
+* kubectl command-line tool
+* Docker (if building Docker images locally)
+* Java Development Kit (JDK) : Java 11 
+* Maven
+
+
