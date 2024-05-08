@@ -8,7 +8,7 @@ Before getting started, ensure you have the following installed:
 * Kubernetes cluster : minikube
 * kubectl command-line tool
 * Docker (if building Docker images locally)
-* Java Development Kit (JDK) : Java 11 
+* Java Development Kit (JDK) : Java 17 
 * Maven
 
 
